@@ -7,4 +7,10 @@ const router = express.Router()
 
 router.post('/create', validator.body(createUserSchema), userController.createUser)
 
+router.post('/login', userController.login)
+
+router.post('/logout', userController.logout)
+
+router.post('/signup', userController.signup)
+
 module.exports = router

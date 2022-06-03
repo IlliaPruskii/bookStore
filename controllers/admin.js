@@ -1,13 +1,13 @@
-const Book = require('../models/book')
+import Book from '../models/book.js'
 
-exports.getBooks = (req, res) => {
+export const getBooks = (req, res) => {
   Book.findAll()
     .then((books) => {
       res.send(books)
     })
 }
 
-exports.createBook = async (req, res, next) => {
+export const createBook = async (req, res, next) => {
   try {
     console.log('createBook')
     const  { name, author, price, image } = req.body;

@@ -1,8 +1,7 @@
-const Book = require("../models/book")
-const User = require("../models/user")
+import Book from '../models/book.js'
+import User from '../models/user.js'
 
-
-exports.getCartItems = async (req, res) => {
+export const getCartItems = async (req, res) => {
   const { userId = 1 } = req.query
   const user = await User.findByPk(userId)
   const cart = await user.getCart()
@@ -10,7 +9,7 @@ exports.getCartItems = async (req, res) => {
   res.send(books)
 }
 
-exports.addBookToCart = async (req, res) => {
+export const addBookToCart = async (req, res) => {
   const { userId = 1, bookId } = req.body
 
   let newQuantity = 1;

@@ -1,6 +1,6 @@
-const Joi = require('joi')
+import Joi from 'joi'
 
-exports.createBookSchema = Joi.object({
+export const createBookSchema = Joi.object({
   name: Joi.string().required(),
   author: Joi.string(),
   price: Joi.number().required(),

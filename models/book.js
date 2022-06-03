@@ -1,6 +1,6 @@
-const Sequelize = require('sequelize')
+import Sequelize from 'sequelize'
 
-const sequelize = require('../utils/database')
+import sequelize from '../utils/database.js'
 
 const Book = sequelize.define('book', {
   id: {
@@ -21,4 +21,4 @@ const Book = sequelize.define('book', {
   image: Sequelize.STRING,
 })
 
-module.exports = Book
+export default Book

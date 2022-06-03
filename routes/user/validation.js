@@ -1,6 +1,6 @@
-const Joi = require('joi')
+import Joi from 'joi'
 
-exports.createUserSchema = Joi.object({
+export const createUserSchema = Joi.object({
   email: Joi.string().required(),
   name: Joi.string()
 })

@@ -1,12 +1,14 @@
-const express = require('express')
-const adminController = require('../../controllers/admin')
-const validator = require('express-joi-validation').createValidator({})
-const { createBookSchema } = require('./validation')
+import express from 'express'
+import joiValidation from 'express-joi-validation'
+import { createBook, getBooks } from '../../controllers/admin.js'
+import { createBookSchema } from './validation.js'
+
+const validator = joiValidation.createValidator({})
 
 const router = express.Router()
 
-router.get('/', adminController.getBooks)
+router.get('/', getBooks)
 
-router.post('/createBook', validator.body(createBookSchema), adminController.createBook)
+router.post('/createBook', validator.body(createBookSchema), createBook)
 
-module.exports = router
+export default router

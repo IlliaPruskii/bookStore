@@ -1,14 +1,14 @@
-const bcryptjs = require('bcryptjs')
-const User = require('../models/user')
+import bcryptjs from 'bcryptjs'
+import User from '../models/user.js'
 
-exports.createUser = async (req, res) => {
+export const createUser = async (req, res) => {
   const { name, email } = req.body
   const newUser = await User.create({ name, email })
   await newUser.createCart()
   res.send(newUser)
 }
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
   const { email, password } = req.body
   const user = await User.findOne({ where: { email } })
   if (!user) {
@@ -26,12 +26,12 @@ exports.login = async (req, res) => {
   req.session.save(() => res.send('You was successfully login! '))
 }
 
-exports.logout = async (req, res) => {
+export const logout = async (req, res) => {
   req.session.destroy()
   res.send('You was logout!')
 }
 
-exports.signup = async (req, res) => {
+export const signup = async (req, res) => {
   const { email, password, passwordConfirmation } = req.body
 
   const userWithThisEmail = await User.findOne({ where: { email }})

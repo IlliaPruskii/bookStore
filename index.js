@@ -1,20 +1,21 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const Sequelize = require("sequelize");
-const sequelize = require('./utils/database')
-const adminRouter = require('./routes/admin/admin')
-const userRouter = require('./routes/user/user')
-const cartRouter = require('./routes/cart/cart')
-const Cart = require('./models/cart')
-const User = require('./models/user')
-const CartItem = require('./models/cart-item')
-const Book = require('./models/book')
-const isAuth = require('./middleware/is-auth')
+import express from 'express'
+import bodyParser from 'body-parser'
+import session from 'express-session'
+import sequelizeSession from 'connect-session-sequelize'
+
+import sequelize from './utils/database.js'
+import adminRouter from './routes/admin/admin.js'
+import userRouter from './routes/user/user.js'
+import cartRouter from './routes/cart/cart.js'
+import Cart from './models/cart.js'
+import User from './models/user.js'
+import CartItem from './models/cart-item.js'
+import Book from './models/book.js'
+import isAuth from './middleware/is-auth.js'
 
 const PORT = 8000
 
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const SequelizeStore = sequelizeSession(session.Store);
 
 const app = express()
 

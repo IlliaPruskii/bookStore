@@ -1,13 +1,13 @@
 import Book from '../models/book.js'
 
-export const getBooks = (req, res) => {
+export const getBooks = (req: any, res: any) => {
   Book.findAll()
-    .then((books) => {
+    .then((books: any) => {
       res.send(books)
     })
 }
 
-export const createBook = async (req, res, next) => {
+export const createBook = async (req: any, res: any) => {
   try {
     console.log('createBook')
     const  { name, author, price, image } = req.body;

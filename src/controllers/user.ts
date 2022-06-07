@@ -1,16 +1,16 @@
 import bcryptjs from 'bcryptjs'
 import User from '../models/user.js'
 
-export const createUser = async (req, res) => {
+export const createUser = async (req: any, res: any) => {
   const { name, email } = req.body
-  const newUser = await User.create({ name, email })
+  const newUser: any = await User.create({ name, email })
   await newUser.createCart()
   res.send(newUser)
 }
 
-export const login = async (req, res) => {
+export const login = async (req: any, res: any) => {
   const { email, password } = req.body
-  const user = await User.findOne({ where: { email } })
+  const user: any = await User.findOne({ where: { email } })
   if (!user) {
     return res.send('User with this email was not found!')
   }
@@ -26,12 +26,12 @@ export const login = async (req, res) => {
   req.session.save(() => res.send('You was successfully login! '))
 }
 
-export const logout = async (req, res) => {
+export const logout = async (req: any, res: any) => {
   req.session.destroy()
   res.send('You was logout!')
 }
 
-export const signup = async (req, res) => {
+export const signup = async (req: any, res: any) => {
   const { email, password, passwordConfirmation } = req.body
 
   const userWithThisEmail = await User.findOne({ where: { email }})

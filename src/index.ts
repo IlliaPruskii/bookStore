@@ -48,6 +48,6 @@ sequelize
   .then(() => {
     app.listen(PORT, () => console.log(`notes-app listening on port ${PORT}!`));
   })
-  .catch(err => {
+  .catch((err: any) => {
     console.log(err);
   });

@@ -1,22 +1,22 @@
 import Book from '../models/book.js'
 import User from '../models/user.js'
 
-export const getCartItems = async (req, res) => {
+export const getCartItems = async (req: any, res: any) => {
   const { userId = 1 } = req.query
-  const user = await User.findByPk(userId)
-  const cart = await user.getCart()
+  const user: any = await User.findByPk(userId)
+  const cart: any = await user.getCart()
   const books = await cart.getBooks()
   res.send(books)
 }
 
-export const addBookToCart = async (req, res) => {
+export const addBookToCart = async (req: any, res: any) => {
   const { userId = 1, bookId } = req.body
 
   let newQuantity = 1;
   let book;
 
-  const user = await User.findByPk(userId)
-  const cart = await user.getCart()
+  const user: any = await User.findByPk(userId)
+  const cart: any = await user.getCart()
   const books = await cart.getBooks({ where: { id: bookId } })
 
   if (books.length > 0) {
